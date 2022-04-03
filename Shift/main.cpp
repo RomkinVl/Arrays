@@ -2,7 +2,7 @@
 using namespace std;
 
 //#define TASK_8
-//#define TASK_9
+#define TASK_9
 
 void main()
 {
@@ -19,14 +19,14 @@ void main()
 	int arr[SIZE] = { 1,2,3,4,5,6,7,8,9,10 };
 
 	//Programm
-	cout << "Âûâîä ìàññèâà: " << endl;
+	cout << "Ð’Ñ‹Ð²Ð¾Ð´ Ð¼Ð°ÑÑÐ¸Ð²Ð°: " << endl;
 	for (int i = 0; i < SIZE; i++)
 	{
 		cout << arr[i] << "\t";
 	}
 	cout << endl << endl;
 
-	cout << "Íà êàêîå ÷èñëî ýëåìåíòîâ íåîáõîäèìî ñäâèíóòü ìàññèâ: "; cin >> n;
+	cout << "ÐÐ° ÐºÐ°ÐºÐ¾Ðµ Ñ‡Ð¸ÑÐ»Ð¾ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð¾Ð² Ð½ÐµÐ¾Ð±Ñ…Ð¾Ð´Ð¸Ð¼Ð¾ ÑÐ´Ð²Ð¸Ð½ÑƒÑ‚ÑŒ Ð¼Ð°ÑÑÐ¸Ð²: "; cin >> n;
 	for (int i = 0; i < n; i++)
 	{
 		buffer = arr[0];
@@ -38,7 +38,7 @@ void main()
 	}
 	cout << endl;
 
-	cout << "Ðåçóëüòàò âûïîëíåíèÿ: " << endl;
+	cout << "Ð ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚ Ð²Ñ‹Ð¿Ð¾Ð»Ð½ÐµÐ½Ð¸Ñ: " << endl;
 	for (int i = 0; i < SIZE; i++)
 	{
 		cout << arr[i] << "\t";
@@ -48,39 +48,64 @@ void main()
 
 #ifdef TASK_9
 	//Constant
-	const int SIZE = 10;
+	const int SIZE_C = 10;
+	const int SIZE_L = 2;
 
 	//Variables
-	int count;
+	int count, buffer;
 
 	//Arrays
-	int arr[SIZE];
+	int arr[SIZE_L][SIZE_C];
 
 	//Programm
-	cout << "Çàïîëíèòå ìàññèâ ëþáûìè öåëûìè ÷èñëàìè: " << endl;
-	for (int i = 0; i < SIZE; i++) {
-		cout << "Ýëåìåíò " << i << " - "; cin >> arr[i];
+	cout << "Ð—Ð°Ð¿Ð¾Ð»Ð½Ð¸Ñ‚Ðµ Ð¼Ð°ÑÑÐ¸Ð² Ð»ÑŽÐ±Ñ‹Ð¼Ð¸ Ñ†ÐµÐ»Ñ‹Ð¼Ð¸ Ñ‡Ð¸ÑÐ»Ð°Ð¼Ð¸: " << endl;
+	for (int i = 0; i < SIZE_C; i++) {
+		cout << "Ð­Ð»ÐµÐ¼ÐµÐ½Ñ‚ " << i << " - "; cin >> arr[0][i];
 	}
 	cout << endl << endl;
 
-	for (int i = 0; i < SIZE; i++) {
+	for (int i = 0; i < SIZE_C; i++) {
 
 		count = 0;
 
-		for (int j = i; j < SIZE; j++) {
+		for (int j = 0; j < SIZE_C; j++) {
 
-			if (arr[i] == arr[j]) count++;
+			if (arr[0][i] == arr[0][j]) count++;			
 		}
 
-		if (count > 1) {
-
-			cout << "Êîëè÷åñòâî ïîâòîðåíèé çíà÷åíèÿ " << arr[i] << " - " << count;
-			cout << endl;
-		}
+		arr[1][i] = count;
 
 		count = 0;
 
 	}
+
+	for (int i = 0; i < SIZE_C; i++) {
+
+		buffer = arr[0][i];
+
+		for (int j = i + 1; j < SIZE_C; j++) {
+
+			if (arr[0][j] == buffer) {
+				arr[0][j] = 0;
+				arr[1][j] = 0;
+			}
+		}
+	}
+
+	for (int i = 0; i < SIZE_C; i++) {
+
+		if (arr[0][i] != 0) cout << "ÐšÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ð¿Ð¾Ð²Ñ‚Ð¾Ñ€ÐµÐ½Ð¸Ð¹ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ñ " << arr[0][i] << " - " << arr[1][i] << endl;
+		
+	}
+
+
+	/*for (int i = 0; i < SIZE_C; i++) {
+		cout << arr[0][i] << "\t";
+	}
+	cout << endl;
+	for (int i = 0; i < SIZE_C; i++) {
+		cout << arr[1][i] << "\t";
+	}*/
 #endif // TASK_9
 		
 }
