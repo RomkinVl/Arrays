@@ -6,5 +6,13 @@ void main()
 {
 	setlocale(LC_ALL, "");
 	const int SIZE = 5;
-	int arr[SIZE];
+	int arr[SIZE] = {3, 5, 8};
+	//arr[2] = 3; //Обращаемся ко 2-му элементу массива, чтобы записать в него значение "3"
+
+	for (int i = 0; i < SIZE; i++)
+	{
+		cout << arr[i] << "\t";
+	}
+
+	cout << endl;
 }
