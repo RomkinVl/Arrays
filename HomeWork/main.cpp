@@ -46,7 +46,7 @@ void main()
 	cout << summ;
 	cout << endl << endl;
 
-	cout << "Среднее арифметическое элеметнов массива: ";
+	cout << "Среднее арифметическое элементов массива: ";
 	average = (double)summ / SIZE;
 	cout << average;
 	cout << endl << endl;
